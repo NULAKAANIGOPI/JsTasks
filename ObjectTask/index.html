@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background : linear-gradient(beige,grey);
+            background-repeat : no-repeat;
+            height : 90vh;
+            display :flex;
+            justify-content : center;
+            padding: 20px;
+        }
+        #container{
+            width: 400px;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label{
+            width: 100px;
+        }
+        input{
+            margin-bottom: 10px;
+        }
+        button{
+            margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: blue;
+            color: white;
+        }
+        button:hover{
+            background-color: red;
+
+        }
+        #output{
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   <div id="container">
+    <h2>Employee Object</h2>
+    <label >Emp Name :</label>
+    <input type="text" id="myName" required /> <br>
+    <label >Emp Job  :</label>
+    <input type="text" id="myJob" required /> <br>
+    <label >Emp Sal  :</label>
+    <input type="text" id="mySal" required /> <br>
+    <button onclick="createEmp()">Create Object</button>
+    <button onclick="displaydetails()">Show Object</button>
+    <button onclick="updateEmp()">Update Object</button>
+    <button onclick="deleteEmp()">Delete Object</button>
+    <div id="output"></div>
+
+   </div>
+    <script>
+        let emp ={};
+        function createEmp(){
+            let name = document.getElementById("myName").value;
+            let job = document.getElementById("myJob").value;
+            let salary = document.getElementById("mySal").value;
+            emp = {
+                myname : name,
+                myjob : job,
+                mysalary : salary
+            };
+            alert("Employee object created successfully");
+        }
+        function displaydetails(){
+            document.getElementById("output").innerHTML = `
+            <h1>Employee Details</h1>
+            <h2>Name : ${emp.myname}</h2>
+            <h2>Job : ${emp.myjob}</h2>
+            <h2>Salary : ${emp.mysalary}</h2>`;
+        }
+        function deleteEmp() {
+            delete emp.myname;
+            delete emp.myjob;
+            delete emp.mysalary;
+            alert("Employee object deleted successfully");
+            document.getElementById("output").innerHTML = `
+            <h1>Employee Details</h1>
+            <h2>Name : ${""}</h2>
+            <h2>Job : ${""}</h2>
+            <h2>Salary : ${""}</h2>`;
+            console.log(emp);
+        }
+
+        function updateEmp() {
+            let name = document.getElementById("myName").value;
+            let job = document.getElementById("myJob").value;
+            let salary = document.getElementById("mySal").value;
+            emp.myname = name;
+            emp.myjob = job;
+            emp.mysalary = salary;
+            alert("Employee object updated successfully");
+            console.log(emp);
+        }
+    </script>
+</body>
+</html>
